@@ -8,7 +8,7 @@ Built with create-react-app
 * Axios
 * Simple client input validations
 
-##Screenshot Provided
+## Screenshot Provided
 
 ![alt text](/React_App.png)
 

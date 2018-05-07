@@ -16,7 +16,10 @@ class EmailForm extends Component {
       emailValid: false,
       subjectValid: false,
       messageValid: false,
-      formValid: false
+      formValid: false,
+      beingSent: false,
+      emailSent: false,
+      failedEmailSent: false,
     };
   }
 
@@ -69,6 +72,8 @@ class EmailForm extends Component {
       text: this.state.message
     };
 
+    this.setState({beingSent: true});
+
     // dev
     const url = '/api/send-email';
 
@@ -79,6 +84,12 @@ class EmailForm extends Component {
       .then(res => {  
         console.log(res);
         console.log(res.data);
+
+        if(res.status === 200) {
+          this.setState({beingSent: false, emailSent: true});
+        } else {
+          this.setState({beingSent: false, emailSent: false, failedEmailSent: true});
+        }
       });
   }
 
@@ -90,8 +101,8 @@ class EmailForm extends Component {
         <div className="panel panel-default">
           <FormErrors formErrors={this.state.formErrors} />
         </div>
-        <form className="emailForm">
-          <h2>Contact Form</h2>
+        <form className="email-form">
+          <h2>Email Contact Form</h2>
         <div className="form-group">
           <label htmlFor="to_email">To:</label>
           <input type="email" className="form-control" onChange={(e) => this.handleUserInput(e)}
@@ -121,6 +132,17 @@ class EmailForm extends Component {
             Submit Message
         </button>
       </form>
+      <div className="alert-group">
+        <div className="alert alert-info" role="alert" hidden={!this.state.beingSent}>
+          Email's currently being sent... Please wait..
+        </div>
+        <div className="alert alert-success" role="alert" hidden={!this.state.emailSent}>
+          Email was sent successfully!
+        </div>
+        <div className="alert alert-danger" role="alert" hidden={!this.state.failedEmailSent}>
+          Email could not be sent at this time.
+        </div>
+      </div>
       </div>
       
     );

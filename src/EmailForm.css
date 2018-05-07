@@ -1,4 +1,9 @@
-.emailForm {
+.email-form,
+.alert-group {
   max-width: 600px;
   margin: auto;
+}
+
+.alert-group {
+  margin: 8px auto;
 }

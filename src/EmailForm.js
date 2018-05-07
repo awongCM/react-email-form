@@ -75,10 +75,10 @@ class EmailForm extends Component {
     this.setState({beingSent: true});
 
     // dev
-    const url = '/api/send-email';
+    // const url = '/api/send-email';
 
     // prod
-    // const url = 'https://mysterious-shore-61618.herokuapp.com/api/send-email';
+    const url = 'https://mysterious-shore-61618.herokuapp.com/api/send-email';
     
     axios.post(url, data)
       .then(res => {  

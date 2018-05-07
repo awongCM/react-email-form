@@ -90,7 +90,8 @@ class EmailForm extends Component {
         } else {
           this.setState({beingSent: false, emailSent: false, failedEmailSent: true});
         }
-      });
+      })
+      .catch(err => this.setState({beingSent: false, emailSent: false, failedEmailSent: true}));
   }
 
 

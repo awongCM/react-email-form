@@ -4,11 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "react": "^16.3.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "3.0.0"
   },
   "proxy": "http://api.dev.local:7000/",
   "scripts": {
